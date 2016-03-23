@@ -14,7 +14,7 @@ payload=$(mktemp $TMPDIR/bosh-io-stemcell-resource-request.XXXXXX)
 cat > $payload <&0
 
 name=$(jq -r '.source.name // ""' < $payload)
-version=$(jq -r '.version.version // ""' < $payload)
+version=$(jq -r '.source.version // ""' < $payload)
 fetch_tarball=$(jq -r '.params.tarball != false' < $payload)
 
 if [ -z "$name" ]; then
